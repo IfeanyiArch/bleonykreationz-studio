@@ -4,10 +4,23 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { getProductById, products } from "@/data/products";
+import { useCart } from "@/contexts/CartContext";
+import { toast } from "@/hooks/use-toast";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
   const product = getProductById(Number(id));
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart(product);
+      toast({
+        title: "Added to cart!",
+        description: `${product.name} has been added to your cart.`,
+      });
+    }
+  };
 
   if (!product) {
     return (
@@ -87,7 +100,7 @@ const ProductDetailPage = () => {
               </p>
 
               <div className="flex gap-3">
-                <Button variant="hero" size="lg" className="flex-1">
+                <Button variant="hero" size="lg" className="flex-1" onClick={handleAddToCart}>
                   <ShoppingBag size={20} className="mr-2" />
                   Add to Cart
                 </Button>
