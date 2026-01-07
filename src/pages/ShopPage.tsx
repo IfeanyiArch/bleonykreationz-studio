@@ -5,10 +5,23 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { products } from "@/data/products";
+import { useCart } from "@/contexts/CartContext";
+import { toast } from "@/hooks/use-toast";
 
 const categories = ["All", "Home", "Accessories", "Toys", "Baby"];
 
 const ShopPage = () => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (e: React.MouseEvent, product: typeof products[0]) => {
+    e.preventDefault();
+    addToCart(product);
+    toast({
+      title: "Added to cart!",
+      description: `${product.name} has been added to your cart.`,
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -107,7 +120,7 @@ const ShopPage = () => {
                     variant="soft" 
                     className="w-full" 
                     size="sm"
-                    onClick={(e) => e.preventDefault()}
+                    onClick={(e) => handleAddToCart(e, product)}
                   >
                     <ShoppingBag size={16} className="mr-2" />
                     Add to Cart

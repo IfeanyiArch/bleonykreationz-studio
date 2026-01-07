@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
+import CartDrawer from "@/components/CartDrawer";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,6 +46,7 @@ const Navigation = () => {
                 </a>
               )
             ))}
+            <CartDrawer />
             <Button variant="hero" size="sm">
               Get in Touch
             </Button>
