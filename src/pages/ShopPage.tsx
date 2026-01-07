@@ -99,9 +99,9 @@ const ShopPage = () => {
       <Navigation />
       
       {/* Hero Banner */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-pink-soft to-background">
+      <section className="pt-32 pb-16 bg-white">
         <div className="container mx-auto px-6 text-center">
-          <span className="font-body text-sm font-medium text-primary bg-card px-4 py-2 rounded-full">
+          <span className="font-body text-sm font-medium text-primary bg-pink-soft px-4 py-2 rounded-full border border-primary/10">
             Handmade with Love
           </span>
           <h1 className="font-display text-5xl md:text-6xl font-semibold text-foreground mt-6 mb-4">
@@ -115,7 +115,7 @@ const ShopPage = () => {
       </section>
 
       {/* Filters & Search */}
-      <section className="py-8 border-b border-border bg-card">
+      <section className="py-8 border-b border-border/50 bg-white">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="flex flex-wrap gap-2">
@@ -124,8 +124,8 @@ const ShopPage = () => {
                   key={category}
                   className={`font-body text-sm px-4 py-2 rounded-full transition-all duration-300 ${
                     category === "All"
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground"
+                      ? "bg-primary text-primary-foreground shadow-soft"
+                      : "bg-muted text-muted-foreground hover:bg-primary hover:text-primary-foreground"
                   }`}
                 >
                   {category}
@@ -137,10 +137,10 @@ const ShopPage = () => {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
                 <Input 
                   placeholder="Search products..." 
-                  className="pl-10 bg-background"
+                  className="pl-10 bg-muted border-0"
                 />
               </div>
-              <Button variant="outline" size="icon" className="shrink-0">
+              <Button variant="outline" size="icon" className="shrink-0 border-border/50">
                 <Filter size={18} />
               </Button>
             </div>
@@ -149,25 +149,25 @@ const ShopPage = () => {
       </section>
 
       {/* Products Grid */}
-      <section className="py-16">
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {allProducts.map((product, index) => (
               <div
                 key={product.id}
-                className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/30 hover:shadow-card transition-all duration-500 animate-fade-up"
+                className="group bg-white rounded-2xl overflow-hidden border border-border/30 hover:border-primary/20 hover:shadow-card transition-all duration-500 animate-fade-up"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <div className="relative">
-                  <div className="aspect-square bg-gradient-to-br from-pink-soft via-secondary to-card flex items-center justify-center">
-                    <div className="w-20 h-20 bg-card rounded-full flex items-center justify-center shadow-soft">
+                  <div className="aspect-square bg-gradient-to-br from-pink-soft to-white flex items-center justify-center">
+                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-soft">
                       <span className="font-display text-2xl text-primary">{product.name.charAt(0)}</span>
                     </div>
                   </div>
-                  <button className="absolute top-3 right-3 w-9 h-9 bg-card/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary hover:text-primary-foreground border border-border">
+                  <button className="absolute top-3 right-3 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary hover:text-primary-foreground shadow-soft">
                     <Heart size={16} />
                   </button>
-                  <span className="absolute top-3 left-3 font-body text-xs font-medium text-muted-foreground bg-card/90 backdrop-blur-sm px-3 py-1 rounded-full border border-border">
+                  <span className="absolute top-3 left-3 font-body text-xs font-medium text-foreground/70 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-soft">
                     {product.category}
                   </span>
                 </div>
@@ -196,7 +196,7 @@ const ShopPage = () => {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-16 bg-gradient-to-r from-pink-soft via-card to-secondary">
+      <section className="py-16 bg-pink-soft">
         <div className="container mx-auto px-6 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-4">
             Custom Orders Welcome
