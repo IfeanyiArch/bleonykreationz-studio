@@ -8,61 +8,62 @@
 
 @layer base {
   :root {
-    --background: 30 33% 98%;
-    --foreground: 0 0% 15%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 15%;
+    --card-foreground: 0 0% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 15%;
+    --popover-foreground: 0 0% 12%;
 
-    --primary: 350 80% 65%;
+    --primary: 340 82% 62%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 30 30% 95%;
-    --secondary-foreground: 0 0% 20%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 25%;
 
-    --muted: 30 20% 94%;
+    --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 350 60% 75%;
-    --accent-foreground: 0 0% 15%;
+    --accent: 340 50% 92%;
+    --accent-foreground: 0 0% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 20% 88%;
-    --input: 30 20% 88%;
-    --ring: 350 80% 65%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 340 82% 62%;
 
     --radius: 0.75rem;
 
-    /* Custom tokens */
-    --pink-soft: 350 70% 92%;
-    --pink-glow: 350 80% 70%;
-    --cream: 35 40% 96%;
-    --charcoal: 0 0% 18%;
+    /* Custom tokens - Pink, White, Gray palette */
+    --pink-soft: 340 60% 95%;
+    --pink-glow: 340 82% 68%;
+    --gray-light: 0 0% 97%;
+    --gray-medium: 0 0% 60%;
+    --charcoal: 0 0% 12%;
     
-    --gradient-hero: linear-gradient(135deg, hsl(350 70% 92%) 0%, hsl(30 33% 98%) 50%, hsl(350 60% 95%) 100%);
-    --gradient-pink: linear-gradient(135deg, hsl(350 80% 65%) 0%, hsl(350 70% 75%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(350 30% 98%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(340 60% 95%) 0%, hsl(0 0% 100%) 50%, hsl(340 40% 97%) 100%);
+    --gradient-pink: linear-gradient(135deg, hsl(340 82% 62%) 0%, hsl(340 70% 72%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
     
-    --shadow-soft: 0 4px 20px -4px hsl(350 50% 50% / 0.15);
-    --shadow-card: 0 8px 30px -8px hsl(350 50% 50% / 0.12);
-    --shadow-elevated: 0 20px 50px -15px hsl(350 50% 50% / 0.2);
+    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.08);
+    --shadow-card: 0 8px 30px -8px hsl(0 0% 0% / 0.1);
+    --shadow-elevated: 0 20px 50px -15px hsl(340 50% 50% / 0.15);
 
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Outfit', sans-serif;
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-foreground: 0 0% 25%;
+    --sidebar-primary: 0 0% 12%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 12%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 340 82% 62%;
   }
 
   .dark {

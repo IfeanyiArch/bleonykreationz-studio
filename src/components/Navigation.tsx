@@ -1,36 +1,49 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Shop", href: "#shop" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: isHomePage ? "#home" : "/" },
+    { name: "Portfolio", href: isHomePage ? "#portfolio" : "/#portfolio" },
+    { name: "Shop", href: "/shop" },
+    { name: "About", href: isHomePage ? "#about" : "/#about" },
+    { name: "Contact", href: isHomePage ? "#contact" : "/#contact" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <a href="#home" className="font-display text-2xl font-semibold text-foreground">
+          <Link to="/" className="font-display text-2xl font-semibold text-foreground">
             Bleony<span className="text-primary">Kreationz</span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                {link.name}
-              </a>
+              link.href.startsWith("/") && !link.href.includes("#") ? (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300"
+                >
+                  {link.name}
+                </a>
+              )
             ))}
             <Button variant="hero" size="sm">
               Get in Touch
@@ -51,14 +64,25 @@ const Navigation = () => {
           <div className="md:hidden pt-4 pb-6 animate-fade-in">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="font-body text-base font-medium text-muted-foreground hover:text-primary transition-colors duration-300"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </a>
+                link.href.startsWith("/") && !link.href.includes("#") ? (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className="font-body text-base font-medium text-muted-foreground hover:text-primary transition-colors duration-300"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="font-body text-base font-medium text-muted-foreground hover:text-primary transition-colors duration-300"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+                )
               ))}
               <Button variant="hero" size="default" className="mt-2">
                 Get in Touch
