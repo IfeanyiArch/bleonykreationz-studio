@@ -1,95 +1,10 @@
 import { ShoppingBag, Heart, Filter, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-
-const allProducts = [
-  {
-    id: 1,
-    name: "Cozy Blanket",
-    price: 85,
-    description: "Hand-crocheted throw blanket in soft cotton blend",
-    category: "Home",
-  },
-  {
-    id: 2,
-    name: "Amigurumi Bunny",
-    price: 35,
-    description: "Adorable handmade stuffed bunny toy",
-    category: "Toys",
-  },
-  {
-    id: 3,
-    name: "Granny Square Bag",
-    price: 55,
-    description: "Vintage-style crochet tote bag",
-    category: "Accessories",
-  },
-  {
-    id: 4,
-    name: "Baby Booties Set",
-    price: 28,
-    description: "Soft crochet booties for newborns",
-    category: "Baby",
-  },
-  {
-    id: 5,
-    name: "Plant Hanger",
-    price: 42,
-    description: "Macramé-style crochet plant holder",
-    category: "Home",
-  },
-  {
-    id: 6,
-    name: "Winter Beanie",
-    price: 32,
-    description: "Warm chunky knit winter hat",
-    category: "Accessories",
-  },
-  {
-    id: 7,
-    name: "Table Runner",
-    price: 65,
-    description: "Elegant lace crochet table runner",
-    category: "Home",
-  },
-  {
-    id: 8,
-    name: "Amigurumi Bear",
-    price: 38,
-    description: "Cuddly handmade teddy bear",
-    category: "Toys",
-  },
-  {
-    id: 9,
-    name: "Market Bag",
-    price: 45,
-    description: "Reusable mesh crochet shopping bag",
-    category: "Accessories",
-  },
-  {
-    id: 10,
-    name: "Baby Cardigan",
-    price: 52,
-    description: "Delicate crochet cardigan for infants",
-    category: "Baby",
-  },
-  {
-    id: 11,
-    name: "Coaster Set",
-    price: 18,
-    description: "Set of 4 decorative crochet coasters",
-    category: "Home",
-  },
-  {
-    id: 12,
-    name: "Headband",
-    price: 22,
-    description: "Stylish ear warmer headband",
-    category: "Accessories",
-  },
-];
+import { products } from "@/data/products";
 
 const categories = ["All", "Home", "Accessories", "Toys", "Baby"];
 
@@ -152,8 +67,9 @@ const ShopPage = () => {
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {allProducts.map((product, index) => (
-              <div
+            {products.map((product, index) => (
+              <Link
+                to={`/product/${product.id}`}
                 key={product.id}
                 className="group bg-white rounded-2xl overflow-hidden border border-border/30 hover:border-primary/20 hover:shadow-card transition-all duration-500 animate-fade-up"
                 style={{ animationDelay: `${index * 0.05}s` }}
@@ -164,7 +80,10 @@ const ShopPage = () => {
                       <span className="font-display text-2xl text-primary">{product.name.charAt(0)}</span>
                     </div>
                   </div>
-                  <button className="absolute top-3 right-3 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary hover:text-primary-foreground shadow-soft">
+                  <button 
+                    onClick={(e) => e.preventDefault()}
+                    className="absolute top-3 right-3 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary hover:text-primary-foreground shadow-soft"
+                  >
                     <Heart size={16} />
                   </button>
                   <span className="absolute top-3 left-3 font-body text-xs font-medium text-foreground/70 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-soft">
@@ -184,12 +103,17 @@ const ShopPage = () => {
                   <p className="font-body text-sm text-muted-foreground mb-4">
                     {product.description}
                   </p>
-                  <Button variant="soft" className="w-full" size="sm">
+                  <Button 
+                    variant="soft" 
+                    className="w-full" 
+                    size="sm"
+                    onClick={(e) => e.preventDefault()}
+                  >
                     <ShoppingBag size={16} className="mr-2" />
                     Add to Cart
                   </Button>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
