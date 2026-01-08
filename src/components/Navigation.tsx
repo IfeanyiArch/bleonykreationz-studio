@@ -8,14 +8,22 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
+  const isShopPage = location.pathname === "/shop" || location.pathname.startsWith("/product/");
 
-  const navLinks = [
+  const homeNavLinks = [
     { name: "Home", href: isHomePage ? "#home" : "/" },
     { name: "Portfolio", href: isHomePage ? "#portfolio" : "/#portfolio" },
     { name: "Shop", href: "/shop" },
     { name: "About", href: isHomePage ? "#about" : "/#about" },
     { name: "Contact", href: isHomePage ? "#contact" : "/#contact" },
   ];
+
+  const shopNavLinks = [
+    { name: "Portfolio", href: "/#portfolio" },
+    { name: "Shop", href: "/shop" },
+  ];
+
+  const navLinks = isShopPage ? shopNavLinks : homeNavLinks;
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
@@ -47,18 +55,23 @@ const Navigation = () => {
               )
             ))}
             <CartDrawer />
-            <Button variant="hero" size="sm">
-              Get in Touch
-            </Button>
+            {!isShopPage && (
+              <Button variant="hero" size="sm">
+                Get in Touch
+              </Button>
+            )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-foreground"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile Menu Button and Cart */}
+          <div className="md:hidden flex items-center gap-2">
+            <CartDrawer />
+            <button
+              className="p-2 text-foreground"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
