@@ -5,6 +5,7 @@ import Shop from "@/components/Shop";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { FEATURES } from "@/config/features";
 
 const Index = () => {
   return (
@@ -12,7 +13,7 @@ const Index = () => {
       <Navigation />
       <Hero />
       <Portfolio />
-      <Shop />
+      {FEATURES.SHOP_ENABLED && <Shop />}
       <About />
       <Contact />
       <Footer />
