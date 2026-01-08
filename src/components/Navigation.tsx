@@ -64,7 +64,7 @@ const Navigation = () => {
 
           {/* Mobile Menu Button and Cart */}
           <div className="md:hidden flex items-center gap-2">
-            <CartDrawer />
+            {isShopPage && <CartDrawer />}
             <button
               className="p-2 text-foreground"
               onClick={() => setIsOpen(!isOpen)}
