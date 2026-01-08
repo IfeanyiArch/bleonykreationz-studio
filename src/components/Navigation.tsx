@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import CartDrawer from "@/components/CartDrawer";
+import { FEATURES } from "@/config/features";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,7 @@ const Navigation = () => {
   const homeNavLinks = [
     { name: "Home", href: isHomePage ? "#home" : "/" },
     { name: "Portfolio", href: isHomePage ? "#portfolio" : "/#portfolio" },
-    { name: "Shop", href: "/shop" },
+    ...(FEATURES.SHOP_ENABLED ? [{ name: "Shop", href: "/shop" }] : []),
     { name: "About", href: isHomePage ? "#about" : "/#about" },
     { name: "Contact", href: isHomePage ? "#contact" : "/#contact" },
   ];
@@ -54,7 +55,7 @@ const Navigation = () => {
                 </a>
               )
             ))}
-            <CartDrawer />
+            {FEATURES.SHOP_ENABLED && <CartDrawer />}
             {!isShopPage && (
               <Button variant="hero" size="sm">
                 Get in Touch
@@ -64,7 +65,7 @@ const Navigation = () => {
 
           {/* Mobile Menu Button and Cart */}
           <div className="md:hidden flex items-center gap-2">
-            {isShopPage && <CartDrawer />}
+            {FEATURES.SHOP_ENABLED && isShopPage && <CartDrawer />}
             <button
               className="p-2 text-foreground"
               onClick={() => setIsOpen(!isOpen)}
